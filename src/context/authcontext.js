@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate} from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
 
@@ -12,6 +13,7 @@ export const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+   const navigate = useNavigate();
 
   useEffect(() => {
     // get session from local storage
@@ -38,6 +40,8 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("session");
     // reset isAuthenticated state
     setIsAuthenticated(false);
+     navigate("/");
+     
   };
 
   return (
