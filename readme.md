@@ -25,3 +25,4 @@ npm i axios
 
 npm i dayjs
 npm i jwt-decode 
+npm i react-toastify
